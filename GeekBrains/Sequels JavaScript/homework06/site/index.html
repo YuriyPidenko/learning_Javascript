@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DZ6</title>
+</head>
+
+<body>
+    <section class="top__products center">
+        <h3 class="subtitle__products">Fetured Items</h3>
+        <p class="text_products">
+            Shop for items based on what we featured in this week
+        </p>
+        <div class="box__products">
+        </div>
+        <button class="button__products">Browse All Product</button>
+    </section>
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataProducts)
+        console.log(data);
+
+        const boxProducts = document.querySelector('.box__products');
+
+        data.forEach(product => {
+
+            const productEl = document.createElement("div");
+            productEl.classList.add('items__products')
+
+            const aEl = document.createElement('a');
+            aEl.href = '#'
+
+            const boxImg = document.createElement("div");
+            boxImg.classList.add('box__img__products')
+
+            const imgEl = document.createElement("img");
+            imgEl.classList.add('img__items__products')
+            imgEl.src = product.img
+            imgEl.alt = 'product'
+
+            const contentEl = document.createElement('div');
+            contentEl.classList.add('content__products')
+
+            const subtitleEl = document.createElement('h2');
+            subtitleEl.classList.add('subtitle__items__products')
+            subtitleEl.textContent = product.subtitle
+
+            const textEl = document.createElement('p');
+            textEl.classList.add('text__items__products')
+            textEl.textContent = product.text
+
+            const priceEl = document.createElement('p');
+            priceEl.classList.add('price__items__products')
+            priceEl.textContent = product.price
+
+            const addEl = document.createElement('a');
+            addEl.classList.add('add')
+            addEl.href = '#'
+            addEl.textContent = product.add
+
+            const addText = document.createElement('p');
+            addText.classList.add('add__text')
+            addText.textContent = product.addText
+
+
+            boxProducts.append(productEl)
+
+            productEl.append(aEl)
+            productEl.append(addEl)
+
+            aEl.append(boxImg)
+            aEl.append(contentEl)
+
+            boxImg.append(imgEl)
+
+            contentEl.append(subtitleEl)
+            contentEl.append(textEl)
+            contentEl.append(priceEl)
+
+            addEl.append(addText)
+
+        });
+    </script>
+</body>
+
+</html>
